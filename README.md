@@ -73,40 +73,40 @@ Ex: `git checkout -b feature/paypal-plus`.
 
 ### Situação: Quero desenvolver uma nova funcionalidade ou correção
 
-Passo 1. Crie uma *feature branch* a partir de `master`.
+**Passo 1.** Crie uma *feature branch* a partir de `master`.
 
 ```sh
 git checkout master
 git checkout -b feature/nice-new-thing
 ```
 
-Passo 2. Desenvolva a nova funcionalidade nessa *branch* e faça os *commits* normalmente.
+**Passo 2.** Desenvolva a nova funcionalidade nessa *branch* e faça os *commits* normalmente.
 
 ```sh
 git commit -m "Add nice new thing"
 ```
 
-Passo 3. Faça um *commit de merge* dessa *feature branch* em `beta` com a flag `--no-ff`.
+**Passo 3.** Faça um *commit de merge* dessa *feature branch* em `beta` com a flag `--no-ff`.
 
 ```sh
 git checkout beta
 git merge feature/nice-new-thing --no-ff
 ```
 
-Passo 4. Faça um *commit de release* na branch `beta` usando o releasy.
+**Passo 4.** Faça um *commit de release* na branch `beta` usando o releasy.
 
 Caso seja a única *feature branch* em `beta`, use: `releasy`.
 Caso já tenha outras *feature branches* em `beta`, use: `releasy pre`.
 
 **Importante:** Certifique-se de que a versão publicada contenha o sufixo `-beta`.
 
-Passo 5. Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
+**Passo 5.** Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
 
-Passo 6. Teste o trabalho feito no ambiente *beta* (vtexcommercebeta). Caso contenha bugs, vá para sua *feature branch* (`git checkout feature/new-nice-thing`) e volte para o passo 2. Caso contrário, continue para o passo 7.
+**Passo 6.** Teste o trabalho feito no ambiente *beta* (vtexcommercebeta). Caso contenha bugs, vá para sua *feature branch* (`git checkout feature/new-nice-thing`) e volte para o passo 2. Caso contrário, continue para o passo 7.
 
-Passo 7. Abra um Pull Request e marque um colega da equipe. PRs são nossos amigos, eles estão aí pra garantir que outra pessoa fique de olho no nosso código. Isso traz mais qualidade pra equipe e pro produto. É uma boa forma de aprender e de ter mais segurança ao colocar novas features em stable. Vá pro passo 8 caso alguém aprove o seu PR ou volte pro passo 2 pra corrigir algum problema.
+**Passo 7.** Abra um Pull Request e marque um colega da equipe. PRs são nossos amigos, eles estão aí pra garantir que outra pessoa fique de olho no nosso código. Isso traz mais qualidade pra equipe e pro produto. É uma boa forma de aprender e de ter mais segurança ao colocar novas features em stable. Vá pro passo 8 caso alguém aprove o seu PR ou volte pro passo 2 pra corrigir algum problema.
 
-Passo 8. Publicando uma *feature branch* em produção:
+**Passo 8.** Publicando uma *feature branch* em produção:
 
 Faça um *commit de merge* dessa *feature branch* em `master` com a flag `--no-ff`.
 
@@ -115,18 +115,18 @@ git checkout master
 git merge feature/nice-new-thing --no-ff
 ``` 
 
-Passo 9. Faça um *commit de release* na branch `master` usando o releasy.
+**Passo 9.** Faça um *commit de release* na branch `master` usando o releasy.
 
 - Incremente uma versão *minor* caso seja uma "feature" ou "update": `releasy minor --stable`
 - Incremente uma versão *patch* caso seja "fix": `releasy patch --stable`
 
 **Importante:** Verifique que a versão não contenha o sufixo `-beta`, caso tenha, você esqueceu de usar *flag* `--stable` no releasy.
 
-Passo 10. Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
+**Passo 10.** Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
 
-Passo 11. Verifique as modificações em *stable* (vtexcommercestable) e acompanhe as métricas para verificar se a sua subida não causou nenhum dano. Caso algo esteja errado, volte a versão no Delorean **imediatamente**! Você poderá debugar o erro em *beta*.
+**Passo 11.** Verifique as modificações em *stable* (vtexcommercestable) e acompanhe as métricas para verificar se a sua subida não causou nenhum dano. Caso algo esteja errado, volte a versão no Delorean **imediatamente**! Você poderá debugar o erro em *beta*.
 
-Passo 12. Comemore! Você publicou algo em produção para milhões de pessoas!
+**Passo 12.** Comemore! Você publicou algo em produção para milhões de pessoas!
 
 ### Situação: Atualizaram a branch `master` e eu estou desenvolvendo uma *feature branch*
 
