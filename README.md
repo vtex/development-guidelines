@@ -135,7 +135,7 @@ Caso já tenha outras *feature branches* em `beta`, use: `releasy pre`.
 **Importante:** Verifique que a versão não contenha o sufixo `-beta`, caso tenha, você esqueceu de usar *flag* `--stable` no releasy.
 
 
-**Passo 9.** Publicando uma *feature branch* em produção:
+**Passo 9.** Publicando uma branch `feature` em produção:
 
 Consolide os commits em `master` clicando em **Merge Pull Request**. 
 
