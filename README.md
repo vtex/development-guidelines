@@ -52,7 +52,7 @@ A branch `master` deve refletir exatamente o que está em produção, ou seja, e
 
 Apesar da branch `beta` ter seu nome fixado, essa branch será a branch que mais será construída e descontruída, logo não guarde nada nela!
 
-**Importante lembrar:** Apenas *commits de release e de merge* devem ser feitos na branch `master` e `beta`.
+**Importante lembrar:** Apenas *commits de merge* devem ser feitos na branch `master` e `beta`.
 
 #### Feature branches
 
@@ -115,7 +115,7 @@ git checkout master
 git merge feature/nice-new-thing --no-ff
 ``` 
 
-**Passo 9.** Faça um *commit de release* na branch `master` usando o releasy.
+**Passo 9.** Faça um *commit de release* na branch `feature` usando o releasy.
 
 - Incremente uma versão *minor* caso seja uma "feature" ou "update": `releasy minor --stable`
 - Incremente uma versão *patch* caso seja "fix": `releasy patch --stable`
