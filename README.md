@@ -127,21 +127,17 @@ Caso já tenha outras *feature branches* em `beta`, use: `releasy pre`.
 
 **Passo 7.** Abra um Pull Request e marque um colega da equipe. PRs são nossos amigos, eles estão aí pra garantir que outra pessoa fique de olho no nosso código. Isso traz mais qualidade pra equipe e pro produto. É uma boa forma de aprender e de ter mais segurança ao colocar novas features em stable. Vá pro passo 8 caso alguém aprove o seu PR ou volte pro passo 2 pra corrigir algum problema.
 
-**Passo 8.** Publicando uma *feature branch* em produção:
-
-Faça um *commit de merge* dessa *feature branch* em `master` com a flag `--no-ff`.
-
-```sh
-git checkout master
-git merge feature/nice-new-thing --no-ff
-``` 
-
-**Passo 9.** Faça um *commit de release* na branch `feature` usando o releasy.
+**Passo 8.** Faça um *commit de release* na *feature branch* usando o releasy.
 
 - Incremente uma versão *minor* caso seja uma "feature" ou "update": `releasy minor --stable`
 - Incremente uma versão *patch* caso seja "fix": `releasy patch --stable`
 
 **Importante:** Verifique que a versão não contenha o sufixo `-beta`, caso tenha, você esqueceu de usar *flag* `--stable` no releasy.
+
+
+**Passo 9.** Publicando uma *feature branch* em produção:
+
+Consolide os commits em `master` clicando em **Merge Pull Request**. 
 
 **Passo 10.** Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
 
