@@ -1,6 +1,27 @@
 # Development Guidelines
 
-## Introdução
+## Sumário 
+
+[INTRODUÇÃO](#introdução)
+
+[Objetivo](#objetivo)
+
+[CONCEITOS](#conceitos)
+
+[Commits](#commits)
+
+[Branches](#branches)
+
+[Feature Branches](#feature-branches)
+
+[WORKFLOW](#workflow)
+
+[Situação: Quero desenvolver uma nova funcionalidade ou correção](#situação-quero-desenvolver-uma-nova-funcionalidade-ou-correção)
+
+[Templates para Issues e Pull Requests](#templates-para-issues-e-pull-requests)
+
+
+## INTRODUÇÃO
 
 ### DISCLAIMER
 Esse guia já pressupõe que você saiba usar o Git e que você saiba como fazer um *commit*, *rebase* e *merge*.
@@ -8,7 +29,7 @@ Esse guia já pressupõe que você saiba usar o Git e que você saiba como fazer
 ### Objetivo
 Não existe a forma certa de usar o git, assim como não existe a forma certa de se escrever um software ou um texto. Logo, esse guia não deve ser lido como a verdade, mas sim como um conselho amigo de uma forma mais conveniente e segura que achamos de usá-lo.
 
-## Conceitos
+## CONCEITOS
 
 ### Commits
 
@@ -69,7 +90,7 @@ Ex: `git checkout -b feature/paypal-plus`.
 
 **Importante lembrar:** Apenas *commits* deve ser feito em uma *feature branch*. Nenhum *commit de release ou de merge* deve ser feito em uma *feature branch*.
 
-## Workflow
+## WORKFLOW
 
 ### Situação: Quero desenvolver uma nova funcionalidade ou correção
 
