@@ -141,3 +141,11 @@ git push origin feature/nice-new-thing -f
 ```
 
 **Importante lembrar:** Sempre mantenha *feature branches* em desenvolvimento rebaseadas em `master`.
+
+### Templates para Issues e Pull Requests 
+
+Uma boa prática adotada por vários é utilizar templates na criação de Issues e PRs que ajudam a descrever o seu trabalho de maneira clara para todos. 
+
+Para adicionar crie uma pasta `.github` na raiz do seu repositório e adicione os arquivos [PULL_REQUEST_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/PULL_REQUEST_TEMPLATE.md) e [ISSUE_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/ISSUE_TEMPLATE.md)
+
+Agradecimentos aos projetos de **omnichannel** e **help-center** de onde esses templates foram pegos. 
