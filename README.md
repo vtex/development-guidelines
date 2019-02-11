@@ -2,23 +2,15 @@
 
 ## Sumário 
 
-[INTRODUÇÃO](#introdução)
-
-[Objetivo](#objetivo)
-
-[CONCEITOS](#conceitos)
-
-[Commits](#commits)
-
-[Branches](#branches)
-
-[Feature Branches](#feature-branches)
-
-[WORKFLOW](#workflow)
-
-[Situação: Quero desenvolver uma nova funcionalidade ou correção](#situação-quero-desenvolver-uma-nova-funcionalidade-ou-correção)
-
-[Templates para Issues e Pull Requests](#templates-para-issues-e-pull-requests)
+- [INTRODUÇÃO](#introdução)
+  - [Objetivo](#objetivo)
+- [CONCEITOS](#conceitos)
+  - [Commits](#commits)
+  - [Branches](#branches)
+    - [Feature Branches](#feature-branches)
+- [WORKFLOW](#workflow)
+  - [Situação: Quero desenvolver uma nova funcionalidade ou correção](#situação-quero-desenvolver-uma-nova-funcionalidade-ou-correção)
+  - [Templates para Issues e Pull Requests](#templates-para-issues-e-pull-requests)
 
 
 ## INTRODUÇÃO
