@@ -75,6 +75,7 @@ Os possíveis `types` são:
 - **feature:** nova funcionalidade ou comportamento
 - **fix:** correção de bug
 - **update:** atualização de dependência
+- **chore:**  ajustes de débito técnico
  
 A description deve ser curta, em inglês e em kebab-case. Ela deve dar uma noção básica do que está sendo desenvolvido nessa *branch*.
 
