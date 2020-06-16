@@ -81,7 +81,7 @@ A description deve ser curta, em inglês e em kebab-case. Ela deve dar uma noç�
 
 Ex: `git checkout -b feature/paypal-plus`.
 
-**Importante lembrar:** Apenas *commits* deve ser feito em uma *feature branch*. Nenhum *commit de release ou de merge* deve ser feito em uma *feature branch*.
+**Importante lembrar:** Apenas *commits* devem ser feitos em uma *feature branch*. Nenhum *commit de release ou de merge* deve ser feito em uma *feature branch*.
 
 ## WORKFLOW
 
