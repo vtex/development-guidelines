@@ -1,10 +1,10 @@
 # Development Guidelines
 
-## Sumário 
+## Summary 
 
-- [INTRODUÇÃO](#introdução)
-  - [Objetivo](#objetivo)
-- [CONCEITOS](#conceitos)
+- [Intro](#intro)
+  - [Objective](#objectives)
+- [Concepts](#concepts)
   - [Commits](#commits)
   - [Branches](#branches)
     - [Feature Branches](#feature-branches)
@@ -13,134 +13,123 @@
   - [Templates para Issues e Pull Requests](#templates-para-issues-e-pull-requests)
 
 
-## INTRODUÇÃO
+## INTRO
 
-### DISCLAIMER
-Esse guia já pressupõe que você saiba usar o Git e que você saiba como fazer um *commit*, *rebase* e *merge*.
+### Disclaimer
+This guide presumes that you know how to use git and the basic concepts of *commit, rebase* and *merge*. 
 
-### Objetivo
-Não existe a forma certa de usar o git, assim como não existe a forma certa de se escrever um software ou um texto. Logo, esse guia não deve ser lido como a verdade, mas sim como um conselho amigo de uma forma mais conveniente e segura que achamos de usá-lo.
+### Objective
+There is no right way to use Git. Therefore, we are giving guidance on using git workflow to simplify this step of your development lifecycle.
 
-## CONCEITOS
+## Concepts
 
 ### Commits
 
-Por simplicidade, iremos dar 3 nomes aos commits:
-- __*commits*__: commits feitos pelo usuário
-- __*commits de merge*__: commits usando o comando `git merge <branch> --no-ff`
-- __*commits de release*__: commits usando a ferramenta [releasy](https://www.npmjs.com/package/releasy)
+By simplicity, we have three types of commits:
+- __*commits*__: commits made by the user 
+- __*merge commits*__: commits through the commend `git merge <branch> --no-ff`
+- __*release commits*__: commits using [releasy](https://www.npmjs.com/package/releasy) tool
 
-O [releasy](https://www.npmjs.com/package/releasy) é uma ferramenta que facilita a mudança de versão do projeto. Ele cria um *commit* com a nova versão inserida no arquivo `package.json` e cria uma *tag* para esse *commit* com a sua versão. Iremos falar mais sobre ele a seguir.
+[Releasy](https://www.npmjs.com/package/releasy) is a tool to simplify the versioning process of a project. It creates a commit with a new version in the `package.json` and creates a *tag* version to this commit.
 
-As mensagens de *commit* devem ser escritas na lingua **inglesa** e seguir o seguinte modelo:
+Commit messages should be written in English following the model: 
 ```
-<Verbo no imperativo> <objeto da ação>
+<Imperative verb> <object>
 ```
 
-Exemplos:
+Examples:
 - Add PayPal Plus as a new payment method
 - Fix profile not showing
 - Update React Router
 - Remove unused dependency
 
-O que fazer:
-- Caso esteja fechando uma issue com o commit, coloque "Fix #<Número da Issue>" no corpo do commit, isto é:
-```
-<Verbo no imperativo> <objeto da ação>    <---- Titulo do commit
-                                          <---- Linha em branco
-Fix #<Número da issue>                    <---- Corpo do commit
-```
 
-O que *não* fazer:
-- Colocar ponto no final da frase. Ex: "Update React Router."
-- Iniciar com letra minúscula
-- Escrever em português
-- Referenciar número de issue no título
+What *not* to do: 
+- Add dot in the end of text Ex: "Update React Router."
+- Start with lowercase
+- Write in Portuguese
 
 ### Branches
 
-Existem basicamente duas branches com nomes fixados: `master` e `beta`.
+Commonly, we have two fixed branches: `master` and `beta`.
 
-A branch `master` deve refletir exatamente o que está em produção, ou seja, ela deve ser tratada como __*the single source of truth*__. É dela que devem sair todas as branches de desenvolvimento.
+The `master` branch must reflect exactly what is in production, it should be treated as __*the single source of truth*__. Is from `master` that every development branch is based on. 
 
-Apesar da branch `beta` ter seu nome fixado, essa branch será a branch que mais será construída e descontruída, logo não guarde nada nela!
+Although the `beta` branch is permanent, it can be a constant override by the team. So, don't keep anything save only in `beta`.
 
-**Importante lembrar:** Apenas *commits de merge* devem ser feitos na branch `master` e `beta`.
+**Important note:** Only *merge commits* should be made on `master` and `beta` branches.
 
 #### Feature branches
 
-Para começar uma nova funcionalidade ou correção, você deve abrir uma branch com base em `master`. Essa *branch* , apesar de nem sempre ser uma *feature*, é chamada de *feature branch*. Ela deve seguir o seguinte esquema de nome: `<type>/<description>`
-
-Os possíveis `types` são:
-- **feature:** nova funcionalidade ou comportamento
-- **fix:** correção de bug
-- **update:** atualização de dependência
-- **chore:**  ajustes de débito técnico
+You must create a branch based on `master` to start a feature, improvement, or fix. This branch is called a *feature branch*. It must have the following structure name: `<type>/<description>`
+The `types` are:
+- **feature:** new feature
+- **fix:** bug fix
+- **update:** e.g.: dependency updates
+- **chore:**  tech debt issues
  
-A description deve ser curta, em inglês e em kebab-case. Ela deve dar uma noção básica do que está sendo desenvolvido nessa *branch*.
+A description must be short in kebab-case. It should give a basic understanding of what is being developed on the branch.
 
 Ex: `git checkout -b feature/paypal-plus`.
 
-**Importante lembrar:** Apenas *commits* devem ser feitos em uma *feature branch*. Nenhum *commit de release ou de merge* deve ser feito em uma *feature branch*.
+**Important note:** Only commits should be made in a *feature branch*. None *release or merge commits* should be made. 
 
-## WORKFLOW
+## Workflow
 
-### Situação: Quero desenvolver uma nova funcionalidade ou correção
+### Scenario: I want to develop a feature improvement 
 
-**Passo 1.** Crie uma *feature branch* a partir de `master`.
-
+**Step 1.** Create a *feature branch* based on `master`.
 ```sh
 git checkout master
 git checkout -b feature/nice-new-thing
 ```
 
-**Passo 2.** Desenvolva a nova funcionalidade nessa *branch* e faça os *commits* normalmente.
+**Step 2.** Develop the improvement in this *branch* making commits. 
 
 ```sh
 git commit -m "Add nice new thing"
 ```
 
-**Passo 3.** Faça um *commit de merge* dessa *feature branch* em `beta` com a flag `--no-ff`.
+**Step 3.** Do it a *merge commit* of this *feature branch* in `beta` with a flag `--no-ff`.
 
 ```sh
 git checkout beta
 git merge feature/nice-new-thing --no-ff
 ```
 
-**Passo 4.** Faça um *commit de release* na branch `beta` usando o releasy.
+**Step 4.** Do it a *release commit* on `beta` using releasy.
 
-Caso seja a única *feature branch* em `beta`, use: `releasy`.
-Caso já tenha outras *feature branches* em `beta`, use: `releasy pre`.
+If it is the only *feature branch* in `beta`, use: `releasy`.
+If it isn't, use: `releasy pre`.
 
-**Importante:** Certifique-se de que a versão publicada contenha o sufixo `-beta`.
+**Important:** Certify that a published version has `-beta` suffix.
 
-**Passo 5.** Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
+**Step 5.** After publishing the version, wait for the build on Pachamama to end and change the version published in Delorean.
 
-**Passo 6.** Teste o trabalho feito no ambiente *beta* (vtexcommercebeta). Caso contenha bugs, vá para sua *feature branch* (`git checkout feature/new-nice-thing`) e volte para o passo 2. Caso contrário, continue para o passo 7.
+**Step 6.** Test your improvement on the *beta* environment (vtexcommercebeta). If you find bugs,  go to your *feature branch* back to step 2. Otherwise, continue to step 7. 
 
-**Passo 7.** Abra um Pull Request e marque um colega da equipe. PRs são nossos amigos, eles estão aí pra garantir que outra pessoa fique de olho no nosso código. Isso traz mais qualidade pra equipe e pro produto. É uma boa forma de aprender e de ter mais segurança ao colocar novas features em stable. Vá pro passo 8 caso alguém aprove o seu PR ou volte pro passo 2 pra corrigir algum problema.
+**Step 7.** Open a Pull Request and ask for a review. PRs are our friends. They ensure that we share knowledge, raise the bar of our code quality, and eventually find bugs. After your PR is approved, go to Step 8. 
 
-**Passo 8.** Faça um *commit de release* na *feature branch* usando o releasy.
+**Step 8.** Do it a *release commit* in the *feature branch* using the releasy.
 
-- Incremente uma versão *minor* caso seja uma "feature" ou "update": `releasy minor --stable`
-- Incremente uma versão *patch* caso seja "fix": `releasy patch --stable`
+- Add a *minor* version in case of a "feature" or "update": `releasy minor --stable`
+- Add a *patch* version in case of a "fix": `releasy patch --stable`
 
-**Importante:** Verifique que a versão não contenha o sufixo `-beta`, caso tenha, você esqueceu de usar *flag* `--stable` no releasy.
+**Important:** Verify that the version doesn't contain the `-beta` suffix. If has, you forgot to use the *flag* `--stable` in releasy.
 
+**Step 9.** Publish the *feature branch* in production: 
 
-**Passo 9.** Publicando uma *feature branch* em produção:
+Put your commits in `master`, clicking in **Merge Pull Request**. 
 
-Consolide os commits em `master` clicando em **Merge Pull Request**. 
+**Step 10.** After publishing the new version, wait for the build ends on Pachamama and change the version in Delorean.
 
-**Passo 10.** Após publicar a nova versão, aguarde o build no Pachamama acabar e mude a versão publicada no Delorean.
+**Step 11.** Verify that the changes are in *stable* (vtexcommercestable) and monitor the metrics to certify that your deployment didn't degrade the platform or your service. If you see something wrong, make the rollback in Delorean **immediately**! You can do the troubleshooting later in *beta*.
 
-**Passo 11.** Verifique as modificações em *stable* (vtexcommercestable) e acompanhe as métricas para verificar se a sua subida não causou nenhum dano. Caso algo esteja errado, volte a versão no Delorean **imediatamente**! Você poderá debugar o erro em *beta*.
+**Step 12.** Celebrate! You published something in production for millions of people. 
 
-**Passo 12.** Comemore! Você publicou algo em produção para milhões de pessoas!
+### Scenario: Someone update the `master` branch, and I'm developing something on my *feature branch*
 
-### Situação: Atualizaram a branch `master` e eu estou desenvolvendo uma *feature branch*
-
-Faça *rebase* da sua *feature branch*.
+Make *rebase* of your *feature branch*.
 
 ```sh
 git checkout master
@@ -150,12 +139,11 @@ git rebase master
 git push origin feature/nice-new-thing -f
 ```
 
-**Importante lembrar:** Sempre mantenha *feature branches* em desenvolvimento rebaseadas em `master`.
+**Important note:** Always maintain your *feature branches* rebased in `master`.
 
-### Templates para Issues e Pull Requests 
+### Issues and Pull Requests Templates
 
-Uma boa prática adotada por vários é utilizar templates na criação de Issues e PRs que ajudam a descrever o seu trabalho de maneira clara para todos. 
+A good practice adopted is to use templates for creating Issues and Pull Requests on Github that help you to describe what you are aiming to do with a change proposal. 
+To do that, you must create a folder called `.github` in the repository root. Add the files [PULL_REQUEST_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/PULL_REQUEST_TEMPLATE.md) and [ISSUE_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/ISSUE_TEMPLATE.md). Feel free to change these files, and also, **please give us feedback on these templates**.
 
-Para adicionar crie uma pasta `.github` na raiz do seu repositório e adicione os arquivos [PULL_REQUEST_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/PULL_REQUEST_TEMPLATE.md) e [ISSUE_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/ISSUE_TEMPLATE.md)
-
-Agradecimentos aos projetos de **omnichannel** e **help-center** de onde esses templates foram pegos. 
+Gratitude for the **omnichannel** and **help-center** projects from which we get these templates. 
