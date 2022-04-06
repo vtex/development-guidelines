@@ -13,7 +13,7 @@
   - [Issues and Pull Requests Templates](#issues-and-pull-requests-templates)
 
 
-## INTRO
+## Intro
 
 ### Disclaimer
 This guide presumes that you know how to use git and the basic concepts of *commit, rebase* and *merge*. 
