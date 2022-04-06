@@ -9,8 +9,8 @@
   - [Branches](#branches)
     - [Feature Branches](#feature-branches)
 - [WORKFLOW](#workflow)
-  - [Situação: Quero desenvolver uma nova funcionalidade ou correção](#situação-quero-desenvolver-uma-nova-funcionalidade-ou-correção)
-  - [Templates para Issues e Pull Requests](#templates-para-issues-e-pull-requests)
+  - [Scenario: I want to develop a feature improvement ](#scenario-i-want-to-develop-a-feature-improvement)
+  - [Issues and Pull Requests Templates](#issues-and-pull-requests-templates)
 
 
 ## INTRO
@@ -51,17 +51,17 @@ What *not* to do:
 
 ### Branches
 
-Commonly, we have two fixed branches: `master` and `beta`.
+Commonly, we have two fixed branches: `main` and `beta`.
 
-The `master` branch must reflect exactly what is in production, it should be treated as __*the single source of truth*__. Is from `master` that every development branch is based on. 
+The `main` branch must reflect exactly what is in production, it should be treated as __*the single source of truth*__. Is from `main` that every development branch is based on. 
 
 Although the `beta` branch is permanent, it can be a constant override by the team. So, don't keep anything save only in `beta`.
 
-**Important note:** Only *merge commits* should be made on `master` and `beta` branches.
+**Important note:** Only *merge commits* should be made on `main` and `beta` branches.
 
 #### Feature branches
 
-You must create a branch based on `master` to start a feature, improvement, or fix. This branch is called a *feature branch*. It must have the following structure name: `<type>/<description>`
+You must create a branch based on `main` to start a feature, improvement, or fix. This branch is called a *feature branch*. It must have the following structure name: `<type>/<description>`
 The `types` are:
 - **feature:** new feature
 - **fix:** bug fix
@@ -78,9 +78,9 @@ Ex: `git checkout -b feature/paypal-plus`.
 
 ### Scenario: I want to develop a feature improvement 
 
-**Step 1.** Create a *feature branch* based on `master`.
+**Step 1.** Create a *feature branch* based on `main`.
 ```sh
-git checkout master
+git checkout main
 git checkout -b feature/nice-new-thing
 ```
 
@@ -119,7 +119,7 @@ If it isn't, use: `releasy pre`.
 
 **Step 9.** Publish the *feature branch* in production: 
 
-Put your commits in `master`, clicking in **Merge Pull Request**. 
+Put your commits in `main`, clicking in **Merge Pull Request**. 
 
 **Step 10.** After publishing the new version, wait for the build ends on Pachamama and change the version in Delorean.
 
@@ -127,23 +127,23 @@ Put your commits in `master`, clicking in **Merge Pull Request**.
 
 **Step 12.** Celebrate! You published something in production for millions of people. 
 
-### Scenario: Someone update the `master` branch, and I'm developing something on my *feature branch*
+### Scenario: Someone update the `main` branch, and I'm developing something on my *feature branch*
 
 Make *rebase* of your *feature branch*.
 
 ```sh
-git checkout master
+git checkout main
 git pull
 git checkout feature/nice-new-thing
-git rebase master
+git rebase main
 git push origin feature/nice-new-thing -f
 ```
 
-**Important note:** Always maintain your *feature branches* rebased in `master`.
+**Important note:** Always maintain your *feature branches* rebased in `main`.
 
 ### Issues and Pull Requests Templates
 
 A good practice adopted is to use templates for creating Issues and Pull Requests on Github that help you to describe what you are aiming to do with a change proposal. 
-To do that, you must create a folder called `.github` in the repository root. Add the files [PULL_REQUEST_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/PULL_REQUEST_TEMPLATE.md) and [ISSUE_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/master/.github/ISSUE_TEMPLATE.md). Feel free to change these files, and also, **please give us feedback on these templates**.
+To do that, you must create a folder called `.github` in the repository root. Add the files [PULL_REQUEST_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/main/.github/PULL_REQUEST_TEMPLATE.md) and [ISSUE_TEMPLATE](https://github.com/vtex/dev-guidelines/blob/main/.github/ISSUE_TEMPLATE.md). Feel free to change these files, and also, **please give us feedback on these templates**.
 
 Gratitude for the **omnichannel** and **help-center** projects from which we get these templates. 
