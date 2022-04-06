@@ -8,7 +8,7 @@
   - [Commits](#commits)
   - [Branches](#branches)
     - [Feature Branches](#feature-branches)
-- [WORKFLOW](#workflow)
+- [Workflow](#workflow)
   - [Scenario: I want to develop a feature improvement ](#scenario-i-want-to-develop-a-feature-improvement)
   - [Issues and Pull Requests Templates](#issues-and-pull-requests-templates)
 
