@@ -1,4 +1,4 @@
-# VTEX Development Guideline
+# VTEX Development Guidelines
 
 ## Summary 
 
@@ -8,9 +8,8 @@
   - [Branches](#branches)
     - [Change Branches](#change-branches)
 - [Workflow](#workflow)
-  - [Scenario: I want to develop a feature improvement ](#scenario-i-want-to-develop-a-feature-improvement)
+  - [Other Scenarios](#other-scenarios)
   - [Issues and Pull Requests Templates](#issues-and-pull-requests-templates)
-
 
 ## Overview
 > **Disclaimer** This guide presumes that you know how to use git and the basic concepts of *commit, rebase* and *merge*. 
@@ -41,7 +40,7 @@ Examples:
 
 
 What *not* to do: 
-- Add dot in the end of text Ex: "Update Service Router."
+- Add dot at the end of text Ex: "Update Service Router."
 - Start with lowercase
 - Write in Portuguese
 
@@ -63,7 +62,7 @@ The `types` are:
 - **feature:** Build a new feature or improvement
   - _feature/add-postal-code_
 - **fix:** Fix a bug
-  - _fix/_
+  - _fix/bad-gateway-error_
 - **update:** Update project dependencies, docs, runbooks, and so on
   - _update/otel-library_
 - **chore:**  Refact to reduce complexity, remove unused code
@@ -104,7 +103,7 @@ If it isn't, use `releasy pre`.
 
 **Step 6.** Test your improvement on the *beta* environment (vtexcommercebeta). If you find bugs,  go to your *change branch* back to step 2. Otherwise, continue to step 7. 
 
-**Step 7.** Open a Pull Request and ask for a review. PRs are our friends. They ensure that we share knowledge, raise the bar of our code quality, and eventually find bugs. After your PR is approved, go to Step 8. 
+**Step 7.** Open a Pull Request and ask for a review. PRs are our friends. They ensure that we raise the bar of our code quality, find bugs and share knowledge with our peers. After your PR is approved, go to Step 8. 
 
 **Step 8.** Do it a *release commit* in the *change branch* using the releasy.
 - Add a *minor* version in case of a "feature" or "update": `releasy minor --stable`
@@ -113,16 +112,17 @@ If it isn't, use `releasy pre`.
 **Important:** Verify that the version doesn't contain the `-beta` suffix. If it has, you forgot to use the *flag* `--stable` in releasy.
 
 **Step 9.** Publish the *change branch* in production: 
-Put your commits in `main`, clicking in **Merge Pull Request**. 
+Put your commits in `main`, clicking on **Merge Pull Request**. 
 
 **Step 10.** After publishing the new version, wait for the build ends on Pachamama and change the version in Delorean.
 
-**Step 11.** Verify that the changes are in *stable* (vtexcommercestable) and monitor the metrics to certify that your deployment didn't degrade the platform or your service. If you see something wrong, make the rollback in Delorean **immediately**! You can do the troubleshooting later in *beta*.
+**Step 11.** Verify that the changes are in the *stable* environment (vtexcommercestable) and monitor the metrics to certify that your deployment didn't degrade the platform or your service. If you see something wrong, make the rollback in Delorean **immediately**! You can do the troubleshooting later in *beta*.
 
 **Step 12.** Celebrate! 🥳 You published something in production for millions of people. 
 
-### Scenario: Someone update the `main` branch, and I'm developing something on my *change branch* 
+### Other Scenarios
 
+**Someone update the `main` branch, and I'm developing something on my *change branch***
 Make *rebase* of your *change branch*.
 
 ```sh
@@ -133,7 +133,7 @@ git rebase main
 git push origin feature/nice-new-thing -f
 ```
 
-**Important note:** Always maintain your *change branches* rebased in `main`.
+**Important note:** Always maintain your *change branches* rebased on `main`.
 
 ### Issues and Pull Requests Templates
 
