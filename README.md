@@ -2,8 +2,7 @@
 
 ## Summary 
 
-- [Intro](#intro)
-  - [Objective](#objectives)
+- [Overview](#overview)
 - [Concepts](#concepts)
   - [Commits](#commits)
   - [Branches](#branches)
@@ -13,12 +12,9 @@
   - [Issues and Pull Requests Templates](#issues-and-pull-requests-templates)
 
 
-## Intro
+## Overview
+> **Disclaimer** This guide presumes that you know how to use git and the basic concepts of *commit, rebase* and *merge*. 
 
-### Disclaimer
-This guide presumes that you know how to use git and the basic concepts of *commit, rebase* and *merge*. 
-
-### Objective
 There is no right way to use Git. Therefore, we are defining our way to approach the change management of our codebase. This document is the guidance on using git workflow to simplify our development lifecycle.
 
 ## Concepts
