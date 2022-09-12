@@ -5,8 +5,10 @@
 <!--- What is the motivation and context for this change? -->
 
 #### How should this be manually tested?
+<!--- Remove if don't needed -->
 
 #### Screenshots or example usage
+<!--- Remove if don't needed -->
 
 #### Types of changes
 - [ ] Bug fix (non-breaking change which fixes an issue)
